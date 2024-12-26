@@ -1,0 +1,89 @@
+splunk
+
+
+siem tool
+
+
+search and reporting
+
+
+search<- 
+(
+to see all the data
+index=*    )  all time
+
+allfield{
+
+source( cctv logs)
+source_type ( cctv_log)
+}
+
+
+
+after setting filters
+
+
+
+go to particular event and then 
+event actions
+show sources
+
+
+extract the data that need fix time spam
+
+
+go to extract new field
+go to log
+use regular expression
+ next
+select field
+	highlight the timestamp to create new field
+	then give name to each field
+
+
+settting --field --extraction
+
+
+selet your regular expression 
+
+
+ ^(?P<timestamp>\d+\-\d+\-\d+\s+\d+:\d+:\d+)\s+(?P<Event>(Login\s\w+|\w+))\s+(?P<user_id>\d+)?\s?(?P<UserName>\w+)\s+.*?(?P<Session_id>\w+)$ 
+
+
+then preview
+
+fininsh 
+explore what i just created in search
+
+
+
+
+now which user have done most activity on system
+search
+index=ccty_feed
+| stats count(Event) by Username
+
+
+visualization
+which event mpst popular
+
+| stats count by Event
+
+
+lets see failed login attemps
+
+index=cctv_feed *failed*
+
+
+	NOTICE: all the login failed have happened at the same time so suspicious and also have the same session_id
+	hmmmm we can use session_id to find the malicious user
+
+
+index = cctv_feed *session_id*
+now change our idex to web_logs
+
+we'll find client ip 
+
+same ip address but different session id
+
+
