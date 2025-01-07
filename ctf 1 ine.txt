@@ -1,0 +1,15 @@
+This tells search engines what to and what not to avoid.
+	robots.txt
+
+
+What website is running on the target, and what is its version?
+	WHATWEB 
+
+Directory browsing might reveal where files are stored.
+	DIRB URL COMPARE IT WITH TREE 
+
+An overlooked backup file in the webroot can be problematic if it reveals sensitive configuration details.
+	DIRB URL -W COMMON-WORLIST -X .bak
+
+Certain files may reveal something interesting when mirrored.
+	httrack then simply use grep in php file to find flag
