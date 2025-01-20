@@ -1,0 +1,67 @@
+OWASP TOP 10 2021
+
+broken access controlll
+		insecure direct object reference...
+		http request madhe id kivha parameters change karaayche anni user change hota a ki nahi baghaycha
+
+CRYPTOGRAPHIC FAILURER
+	gaining the admin access through watching the code carefully so the get more information on the server and then  trying to get *.db* file after getting sqllite3 access it then try to db info ....then if hashing is weak then you'll get the password bby hashing from sha 256 decoder or MD5
+
+
+INJECTION 
+	sql injection
+		 This occurs when user-controlled input is passed to SQL queries. As a result, an attacker can pass in SQL queries to manipulate the outcome of such queries. This could potentially allow the attacker to access, modify and delete information in a database when this input is passed into database queries. This would mean an attacker could steal sensitive information such as personal details and credentials.
+	command injection:
+		This occurs when user input is passed to system commands. As a result, an attacker can execute arbitrary system commands on application servers, potentially allowing them to access users' systems
+		we should know the code and working of the code to execute the injection
+	Exploiting Command Injection:
+		echo "my username is $(whoami)"
+			$ madhlla adhi execute hoil
+		this willwork mostly 
+		echo "kahi pan type karaych nantr $(command)"
+
+
+INSECURE DESIGN
+		TRY GUESSING PASSWORD OR RESETING THE PASWD BY EXPLOTING THE 
+    AUTHENTICATION times
+
+SECURITY MISCONFIGURATION
+	Poorly configured permissions on cloud services, like S3 buckets.
+	Having unnecessary features enabled, like services, pages, accounts or privileges.(open ftp)
+	Default accounts with unchanged passwords.(admin - admin)
+	Error messages that are overly detailed and allow attackers to find out more about the system.(assests or upload location in code comment)
+	Not using HTTP security headers.(https not enable)
+
+	debugging interfaces(python console open or enabled)
+
+	
+VUNERABLE AND OUTDATED COMPONENTS
+	zero day establisher exploits or exploits on the exploit.db
+
+INDENTIFICATION AND AUTHENTICATION FAILURE
+	username as "admin"   then create new register as " admin" with space..it will have same power or same acc login but different pass 
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
