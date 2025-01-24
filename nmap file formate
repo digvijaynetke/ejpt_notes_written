@@ -1,0 +1,27 @@
+nmap file formate
+
+
+3 major formate 
+-oA
+
+-oN <- normal formate
+-OX <- xml format that store..offfers a conversion layer import into metasploit framework'
+-oG <- grepable formate
+
+nmap -Pn -sS -F -T4 <IP> -oN nmap_normal.txt
+same as in terminal
+
+
+
+nmap -Pn -sS -F -T4 <IP> -oX nmap_XML.xml
+
+
+import scan result in metasploit
+ensure service postgresqll must be start
+
+metasploit requeries connect to postgresql server
+
+msf console
+
+
+
