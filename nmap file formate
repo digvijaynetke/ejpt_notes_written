@@ -21,7 +21,10 @@ ensure service postgresqll must be start
 
 metasploit requeries connect to postgresql server
 
-msf console
+msfconsole
+
+workspace
+workspace -h
 
 
 
