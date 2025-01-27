@@ -1,0 +1,99 @@
+Port Scanning with Auxiliary Modules
+
+
+We can also use auxiliary modules to discover hosts and perform port
+scanning on a different network subnet after we have obtained initial access
+on a target system.
+
+
+Our objective is to utilize auxiliary
+modules to discover open ports on our
+first target.
++ The next step will involve exploiting the
+service running on the target in order to
+obtain a foothold.
++ We will then utilize our foothold to
+access other systems on a different
+network subnet (pivoting).
++ We will then utilize auxiliary modules to
+scan for open ports on the second target.
+
+IMPLEMENTATION
+
+
+start postgresql
+msfconsole
+
+check status of connection
+
+create new workspace
+
+search portscan
+use tcp scna or anything  needed
+use 5/6 <- indexing also works
+
+show options 
+
+set RHOST = target ip
+
+set port if wanted 
+
+run
+
+we will see port 80 is open 
+curl the ip
+see the name of the  application running
+
+search <application name>
+
+use that exploit 
+show options again 
+
+set rhost 
+set targetURL to root by just setting it to /
+
+exploit
+
+it will allocate us the meterpreter session 
+
+use sysinfo
+
+
+to run the bash command
+
+shell
+/bin/bash -i
+
+ifconfig
+
+terminate out of it 
+ctl C
+
+adding route within meterpreter
+
+run autoroute -s <one ip address for a subnet that you want to target>
+
+background
+
+sessions
+ again 
+
+search portscan
+
+use tcpscan
+set rhosts to the 2 victum of the external network
+run
+
+back
+
+search udp_sweep
+
+use <>
+show options
+
+set rhosts <target>
+
+
+
+
+
