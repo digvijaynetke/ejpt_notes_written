@@ -39,6 +39,9 @@ db_nmap -Pn -sS -sV -O -p445 <IP>
 scan results will automatically save with the current workspace of metaspoit framework 
 
 
+we can also see the avaliable vulnarability by
+vulns <- 
+
 hosts
 
 
