@@ -48,4 +48,14 @@ echo $?
 
 
 
-N
+NOW MAKING IT PRINT HELLO WORLD
+
+we'll use syscall name WRITE
+
+// to comment
+rdx stores the length of character
+rsi stores the function that will be called
+rax number on the syscall 
+
+
+
