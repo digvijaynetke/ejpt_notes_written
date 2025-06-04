@@ -8,3 +8,44 @@ move rdi , qword ptr[rsi] <- moving the 8 byte length from memory to register
 qword - 8 byte ......  ^ assigning the rsi value as pointer and moving it to rdi register 
 
 move qword ptr[rsi] , rdi   <- moving register value to memory in the 8 bytes of register memory 
+
+
+we need the linker to load 
+
+vim asem.s
+ gloabal _start <- boiler plate
+ intel_syntax noprefix 
+
+_start:
+
+esc :wq <- to save
+
+in terminal 
+as asem.s -o asem.o
+
+
+we need to invoke the liinker to convert the exeutable elf
+we need to use linker to make it full ELf
+
+
+use gcc
+
+gcc -o asem asem.o -nostdlib -static  <- so that binary doesn;t get any additional stuff from lib c
+now crash
+
+change the code try again
+
+
+syscall is imp ->https://chromium.googlesource.com/chromiumos/docs/+/master/constants/syscalls.md
+
+exit use 60 to exit the code 
+
+./asem to run the file 
+to see the output
+
+echo $?
+
+
+
+
+N
