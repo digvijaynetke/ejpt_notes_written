@@ -1,1 +1,10 @@
+rsi rdi <- registers which are in cpu
 
+move rdi , 8 <- moving constant value "8' to register 8 
+
+move rdi, rsi <- moving the value of register rsi to rdi 
+
+move rdi , qword ptr[rsi] <- moving the 8 byte length from memory to register 
+qword - 8 byte ......  ^ assigning the rsi value as pointer and moving it to rdi register 
+
+move qword ptr[rsi] , rdi   <- moving register value to memory in the 8 bytes of register memory 
