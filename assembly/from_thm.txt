@@ -1,0 +1,201 @@
+Common Instructions
+Data Movement
+
+MOV is used to move/store the source operand into the destination. The source doesn't have to be an immediate value like it is in the following example. In the following example, the immediate value of 5 is being moved into RAX.
+
+This is equivalent to RAX = 5.
+
+mov RAX, 5
+
+LEA is short for Load Effective Address. This is essentially the same as MOV except for addresses. They key difference between MOV and LEA is that LEA doesn't dereference. It's also commonly used to compute addresses. In the following example, RAX will contain the memory address/location of num1.
+
+lea RAX, num1
+
+lea RAX, [struct+8]
+
+mov RBX, 5
+lea RAX, [RBX+1]
+
+In the first example, RAX is set to the address of num1. In the second, RAX is set to the address of the member in a structure which is 8 bytes from the start of the structure. This would usually be the second member. The third example RBX is set to 5, then LEA is used to set RAX to RBX + 1. RAX will be 6.
+
+PUSH is used to push data onto the stack. Pushing refers to putting something on the top of the stack. In the following example, RAX is pushed onto the stack. Pushing will act as a copy so RAX will still contain the value it had before it was pushed. Pushing is often used to save the data inside a register by pushing it onto the stack, then later restoring it with `pop`.
+
+push RAX
+
+POP is used to take whatever is on the top of the stack and store it in the destination. In the following example whatever is on the top of the stack will be put into RAX.
+
+pop RAX
+
+Arithmetic:
+
+INC will increment data by one. In the following example RAX is set to 8, then incremented. RAX will be 9 by the end.
+
+mov RAX, 8
+inc RAX
+
+DEC decrements a value. In the following example, RAX ends with a value of 7.
+
+mov RAX, 8
+dec RAX
+
+ADD adds a source to a destination and stores the result in the destination. In the following example, 2 is moved into RAX, 3 into RBX, then they are added together. The result (5) is then stored in RAX.
+
+Same as RAX = RAX + RBX or RAX += RBX.
+
+mov RAX, 2
+mov RBX, 3
+add RAX, RBX
+
+SUB subtracts a source from a destination and stores the result in the destination. In the following example, RAX will end with a value of 2.
+
+Same as RAX = RAX - RBX or RAX -= RBX.
+
+mov RAX, 5
+mov RBX, 3
+sub RAX, RBX
+
+Multiplication and division are a bit different.
+Because the sizes of data can vary and change greatly when multiplying and dividing, they use a concatenation of two registers to store the result. The upper half of the result is stored in RDX, and the lower half is in RAX. The total result of the operation is RDX:RAX, however, referencing just RAX is usually good enough. Furthermore, only one operand is given to the instruction. Whatever you want to multiply or divide is stored in RAX, and what you want to multiply or divide by is passed as the operand. Examples are provided in the following descriptions.
+
+MUL (unsigned) or IMUL (signed) multiplies RAX by the operand. The result is stored in RDX:RAX. In the following example, RDX:RAX will end with a value of 125.
+The following is the same as 25*5
+
+mov RAX, 25
+mov RBX, 5
+mul RBX ; Multiplies RAX (25) with RBX (5)
+
+After that code runs, the result is stored in RDX:RAX but in this case, and in most cases, RAX is enough.
+
+DIV (unsigned) and IDIV (unsigned) work the same as MUL. What you want to divide (dividend) is stored in RAX, and what you want to divide it by (divisor) is passed as the operand. The result is stored in RDX:RAX, but once again RAX alone is usually enough.
+
+mov RAX, 18
+mov RBX, 3
+div RBX ; Divides RAX (18) by RBX (3)
+
+After that code executes, RAX would be 6.
+
+Flow Control:
+
+RET is short for return. This will return execution to the function that called the currently executing function, aka the caller. As you will soon learn, one of the purposes of RAX is to hold return values. The following example sets RAX to 10 then returns. This is equivalent to return 10; in higher-level programming languages.
+
+mov RAX, 10 ret
+
+CMP compares two operands and sets the appropriate flags depending on the result. The following would set the Zero Flag (ZF) to 1 which means the comparison determined that RAX was equal to five. Flags are talked about in the next section. In short, flags are used to represent the result of a comparison, such as if the two numbers were equal or not.
+
+mov RAX, 5
+cmp RAX, 5
+
+JCC instructions are conditional jumps that jump based on the flags that are currently set. JCC is not an instruction, rather a term used to mean the set of instructions that includes JNE, JLE, JNZ, and many more. JCC instructions are usually self-explanatory to read. JNE will jump if the comparison is not equal, and JLE jumps if less than or equal, JG jumps if greater, etc. This is the assembly version of if statements.
+
+The following example will return if RAX isn't equal to 5. If it is equal to 5 then it will set RBX to 10, then return.
+
+mov RAX, 5
+cmp RAX, 5
+jne 5 ; Jump to line 5 (ret) if not equal.
+mov RBX, 10
+ret
+
+NOP is short for No Operation. This instruction effectively does nothing. It's typically used for padding because some parts of code like to be on specific boundaries such as 16-bit or 32-bit boundaries.
+Back To The Example
+
+Remember the example from 3.1? Here it is:
+
+if(x == 4){
+    func1();
+}
+else{
+    return;
+}
+
+is the same as
+
+mov RAX, x
+cmp RAX, 4
+jne 5 ; Line 5 (ret)
+call func1
+ret
+
+Hopefully, you can now work out the assembly version on its own. It moves the variable x into RAX, then it compares x to 4. If they are not equal then it will return, if they are equal then it calls "func1".
+Flipping Out
+
+Remember how the compiler is all about efficiency? Let me show you how the compiler thinks, as you're going to see it constantly.
+
+Instead of what a programmer would typically write:
+
+if(x == 4){
+    func1();
+}
+else{
+    return;
+}
+
+The compiler will generate something closer to:
+
+if(x != 4){
+    goto __exit;
+}
+func1();
+__exit:
+return;
+
+The compiler generates code this way because it's almost always more efficient and skips more code. The above examples may not see much of a performance improvement over one another, however, in larger programs the improvement can be quite significant.
+Pointers
+
+Assembly has its ways of working with pointers and memory addresses as C/C++ does. In C/C++ you can use dereferencing to get the value inside of a memory address. For example:
+
+int main(){
+    int num = 10;
+    int* ptr = &num
+    return (*ptr + 5);
+}
+
+    ptr is a pointer to num, which means ptr is holding the memory address of num.
+
+    Then return the sum of what's at the address inside ptr (num which is 10) and 5.
+
+Two of the most important things to know when working with pointers and addresses in Assembly are LEA and square brackets.
+
+    Square Brackets - Square brackets dereference in assembly. For example, [var] is the address pointed to by var. In other words, when using [var] we want to access the memory address that var is holding.
+
+    LEA - Ignore everything about square brackets when working with LEA. LEA is short for Load Effective Address and it's used for calculating and loading addresses.
+
+It's important to note that when working with the LEA instruction, square brackets do not dereference.
+
+LEA is used to load and calculate addresses, NOT data. It doesn't matter if there are square brackets or not, it's dealing with addresses ONLY. LEA is the instruction that will mess with your head when you're sleep-deprived.
+
+Here is a simple example of dereferencing and a pointer in Assembly:
+
+lea RAX, [var]
+mov [RAX], 12
+
+In the example above the address of var is loaded into RAX. This is LEA we are working with, there is no dereferencing. RAX is now acting as a pointer since it holds the address to the variable. Then 12 is moved into the address pointed to by RAX). The address pointed to by RAX is the var variable. If that Assembly was executed, var would be 12. This is all the same as doing mov var, 12.
+
+Going back to the code example from when we started talking about pointers, here it is in pseudo-assembly:
+
+mov num, 10
+lea ptr, [num]
+mov rax, [ptr]
+add rax, 5
+ret
+
+    Move 10 into num
+
+    Load the address of num into ptr
+
+    Move the data that is at the address inside ptr (num which is 10) into rax.
+
+    Add rax (10) and 5.
+
+    RET - This will return the data inside RAX. This is explained later in calling conventions.
+
+Earlier I said that LEA can be used to calculate addresses, and it often is, here's an example.
+
+lea RAX, [RCX+8] ;This will add 8 to the address inside RCX, and set RAX to the resulting address.
+
+mov RAX, [RCX+8] ;This will add 8 to the address already held by RCX, then dereference the new address and put whatever is at that address into RAX.
+
+One more time:
+
+It's important to note that when working with LEA square brackets do not dereference.
+
+You'll see LEA and MOV used all the time so be sure you understand this and pay attention to details. 
