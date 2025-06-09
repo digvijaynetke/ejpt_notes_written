@@ -1,0 +1,19 @@
+for brute force 
+
+Hydra -L username wordlist -U password wordlist  <ip address> http-get  (method or protoccol used ) /webdav (directory) 
+GET-METHOD
+hydra <username> <wordlist> MACHINE_IP http-post-form "<path>:<login_credentials>:<invalid_response>"
+Post-Web-Form
+
+hydra -l root -P /usr/share/wordlists/metasploit/unix_passwords.txt -t 6 ssh://192.168.1.123
+SSH
+hydra -l <username> -P <full path to pass> <ip_address> -t 4 ssh
+
+
+hydra -l user -P passlist.txt ftp:<ip address>
+FTP
+
+
+
+
+
