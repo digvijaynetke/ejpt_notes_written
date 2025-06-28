@@ -1,0 +1,13 @@
+{
+    "name":"digvijay",
+    "score":"8.01",
+    "isAdmin": false,
+    "city":"Nashik",
+    "license":null,
+    "shop":["food","cloths","people"],
+    "myobject" : {
+        "name":"chicken",
+        "weight" : 2
+    }
+
+}

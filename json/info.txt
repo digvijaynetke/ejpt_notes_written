@@ -1,0 +1,115 @@
+use instead of xml api..
+
+improve human readibility
+
+use to seamlessly integrate javascript (frontend + json)
+
+
+json -> javascript  object notation
+
+
+always in key value pair 
+
+" in double quote
+
+{
+
+}
+always in bracket
+
+{
+    "name":"digvijay",
+    "score":"8.01",
+    "isAdmin": false,
+    "city":"Nashik"
+}
+
+
+in console
+
+myJson = `{
+    "name":"digvijay",
+    "score":8.01,
+    "isAdmin":false
+}`
+
+'{ \n"name":"digs",\n"score":"8.01",\n"isAdmin":false}'
+
+
+JSON.parse(myJson); <- now javascript object in converted to javascript
+
+array in json 
+
+
+"shop":["food","cloths","people"]
+
+
+FROM CONSOLE 
+         mahjson= `{
+        "name":"digs",
+        "age":21,
+        "isaddmin":false,
+        "licese":null,
+        "shop":["food","cloths","oil"]
+        }`;
+        '{\n"name":"digs",\n"age":21,\n"isaddmin":false,\n"licese":null,\n"shop":["food","cloths","oil"]\n}'
+        JSON.parse(mahjson);
+
+
+
+json chya madhe json kasa
+mahjson= `{
+        "name":"digs",
+        "age":21,
+        "isaddmin":false,
+        "licese":null,
+        "shop":["food","cloths","oil"]
+        "myObject": { 
+            "name":"nested",
+            "mark":44
+        }     
+   }`;
+
+
+to acces oil
+parsed=["myObject][2];
+
+we can pass parse to a variable
+
+parsed = JSON.parse(mahjson);
+parsed["isAdmin"]
+
+parsed["age"];
+21
+parsed["isa
+VM1988:1 Uncaught SyntaxError: Invalid or unexpected tokenUnderstand this error
+parsed["isaddmin"];
+false
+parsed["myObject"];
+{name: 'nested', mark: 44}
+
+
+
+
+
+
+
+
+mahjson= `{
+        "name":"digs",
+        "age":21,
+        "isaddmin":false,
+        "licese":null,
+        "shop":["food","cloths","oil"]
+        "myObject": { 
+            "name":"nested",
+            "mark":44,
+            "shopObjects":["kelli","batata",{"palebhajya":"shepuuu"}]
+        }     
+   }`;
+
+
+how to acces shepuuu
+pased["myObject]["shopObjects][2]["palebhajya"]
+first in 2 then in palebhajya...
+
