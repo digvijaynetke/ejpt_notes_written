@@ -1,0 +1,11 @@
+get the download link of latest version of lynis 
+
+we can also get apt-get install lynis <- but it is old version  
+
+install new tools in /opt/
+
+chmod +x lynis
+
+./lynis --help
+
+
