@@ -1,0 +1,1 @@
+print("ynis is a battle-tested security tool for systems \nrunning Linux, macOS, or Unix-based operating system.\n It performs an extensive health scan of your systems\n to support system hardening and compliance testing.\n The project is open source software with the GPL license and available since 2007.")
