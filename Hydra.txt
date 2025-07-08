@@ -13,6 +13,9 @@ hydra -l <username> -P <full path to pass> <ip_address> -t 4 ssh
 hydra -l user -P passlist.txt ftp:<ip address>
 FTP
 
+RDP
+
+hydra -L <list> -P <password list> rdp://<IP> -s <port_number> 
 
 
 
