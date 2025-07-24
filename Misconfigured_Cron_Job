@@ -1,0 +1,60 @@
+
+
+📝 Privilege Escalation via Misconfigured Cron Job
+
+ 🎯 Objective:
+
+Gain **root privileges** from a **non-sudo user** (`student`) by exploiting a **misconfigured cron job** that runs a script every minute with **elevated privileges**.
+
+
+ 📂 Initial Context:
+
+* Found a cron job owned by **root** that runs **every minute**.
+* The cron job **executes a script or binary** located at a path **writable** by the `student` user.
+* The `student` user does **not have sudo access** by default.
+* No text editors like `nano` or `vim` were available on the system.
+
+
+
+ ✅ Exploitation Strategy:
+
+1. Create a **bash script** (`copy.sh`) that will **add a sudo rule** for the `student` user.
+2. This rule gives the `student` user **passwordless sudo access** to everything.
+
+---
+
+ 🧠 Command Used:
+
+printf '#!/bin/bash\necho "student ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers' > /usr/local/share/copy.sh
+
+
+ 🔍 Explanation of the Command:
+
+
+
+| Part                                    | Description                                                                                           |
+| --------------------------------------- | ----------------------------------------------------------------------------------------------------- |
+| `printf`                                | Creates formatted output. Here, it's writing a shell script.                                          |
+| `#!/bin/bash`                           | Shebang to tell system this is a Bash script.                                                         |
+| `echo "student ALL=(ALL) NOPASSWD:ALL"` | Adds a line to the `sudoers` file allowing `student` to run any command without a password.           |
+| `>> /etc/sudoers`                       | Appends this line to the main sudoers file.                                                           |
+| `>`                                     | Redirects the whole script into a file at `/usr/local/share/copy.sh` (location used by the cron job). |
+
+
+
+ 🚀 Result:
+
+When the **cron job runs**, it executes `copy.sh` as **root**, appending the sudoers line. After one minute, the `student` user can now do:
+
+sudo su
+
+...and get a **root shell without password**.
+
+ ⚠️ Important Notes:
+
+* Modifying `/etc/sudoers` directly is risky. A syntax error can **lock out all sudo access**.
+* A safer approach is to use `visudo`, but in exploitation scenarios, direct edits may be necessary.
+* This is a **real-world privilege escalation vector** and should be patched by **restricting write access** to cron-executed files.
+
+---
+
