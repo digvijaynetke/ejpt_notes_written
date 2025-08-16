@@ -1,4 +1,4 @@
-# nmap file formate
+# NMAP file formate
 
 
 3 major formate 
