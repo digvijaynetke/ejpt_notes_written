@@ -43,7 +43,7 @@ python3 -m http.server 8080
 
 pythom -m SimpleHTTPServer 80
 
-#		# ENCODEING PAYLOAD 
+#		 ENCODEING PAYLOAD 
 		
 		
 we can envade older AV sol by encoding our payloads
@@ -92,7 +92,7 @@ but it is much smaller than windows payloads
 
 
 
-##Injecting Payloads Into Windows Portable Executables 
+#  Injecting Payloads Into Windows Portable Executables 
 
 msfvenom -x or --template for specify custom template also use -k or --keep to save behaviour and inject payload as a new thread
 
