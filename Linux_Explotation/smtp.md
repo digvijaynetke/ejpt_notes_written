@@ -33,7 +33,7 @@ Haraka versions V2.8.9 are vulnerable to command injection.
 THIS IS A STAGELESS PAYLOAD
 ```
 >>>set LHOST **<eth1>**
->>>```bash
+```bash
 *tHIS NEEDS 8080 THATS WHY WE CHANGED SRV_PORT TO DIFFERENT ONE*
 ```
->>> RUN
+>RUN
