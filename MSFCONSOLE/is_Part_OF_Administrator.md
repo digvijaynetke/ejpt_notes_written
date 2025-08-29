@@ -1,7 +1,7 @@
 # How to see wheather the gained user access is a part of administrative group
-meterpreter>shell
->net users
->net localgroup administrator
+- meterpreter>shell
+- >net users
+- >net localgroup administrator
 
 
 ## bypassing uac
