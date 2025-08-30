@@ -1,5 +1,4 @@
 
-````markdown
 # Enabling RDP on Windows (Post-Exploitation)
 
 After gaining **NT AUTHORITY/SYSTEM** access:
@@ -13,7 +12,6 @@ set SESSION 1
 set USER Administrator       # optional
 set PASSWORD password_12345  # optional
 run
-````
 
 ---
 
