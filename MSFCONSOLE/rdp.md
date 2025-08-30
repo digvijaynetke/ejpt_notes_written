@@ -12,8 +12,7 @@ set SESSION 1
 set USER Administrator       # optional
 set PASSWORD password_12345  # optional
 run
-
----
+```
 
 ## 2. Change Password (from Meterpreter)
 
@@ -22,7 +21,6 @@ run
 net user Administrator password_111112
 exit
 ```
-
 ---
 
 ## 3. Connect via RDP
