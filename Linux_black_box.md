@@ -1,4 +1,4 @@
-# Linux — Black-Box Penetration Testing (GitHub-ready Markdown)
+# Linux — Black-Box Penetration Testing 
 
 > **Warning / rules:** Only test systems you are explicitly authorized to. These notes are for authorised security testing and learning in safe labs.
 
