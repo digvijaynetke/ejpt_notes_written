@@ -4,13 +4,13 @@
 Unlike other forms of social engineering that rely on deception or coercion, pretexting involves the creation of a false narrative or context to establish credibility and gain the trust of the target.
 
 
-# Characteristics of Pretexting
+## Characteristics of Pretexting
 + False Pretense: The attacker creates a fictional story or pretext to deceive the target into believing that the interaction is legitimate and trustworthy. This pretext often involves impersonating someone with authority, expertise, or a legitimate reason for requesting information or assistance.
 + Establishing Trust: The attacker uses the pretext to establish rapport andbuild trust with the target. This may involve leveraging social engineering techniques, such as mirroring the target's language, tone, and behavior, to create a sense of familiarity and connection
 + Manipulating Emotions: Pretexting often exploits human emotions, suchas curiosity, fear, urgency, or sympathy, to manipulate the target's behavior. By appealing to these emotions, the attacker can influence the target's decision-making process and increase compliance with their requests.
 + Information Gathering: Once trust is established, the attacker seeks to extract sensitive information or access privileges from the target. This may involve posing as a trusted entity (e.g., colleague, vendor, service provider) and requesting information under the pretext of a legitimate need or emergency.
 + Maintaining Consistency: To maintain the illusion of legitimacy, the attacker ensures that the pretext remains consistent and plausible throughout the interaction.
--This may require careful planning, research, and improvisation to adapt to the target's responses and maintain credibility
+- This may require careful planning, research, and improvisation to adapt to the target's responses and maintain credibility
 
 
 ## Pretexting Examples
@@ -19,8 +19,8 @@ Unlike other forms of social engineering that rely on deception or coercion, pre
 + Emergency Situation: An attacker fabricates an emergency situation, such as a security breach, data leak, or system outage, and contacts employees, requesting immediate assistance or information. The attacker exploits the target's sense of urgency and concern to extract sensitive information or gain access to systems under the pretext of resolving the emergency.
 
 ## Importance and Impact
--Pretexting can be highly effective in bypassing technical controls and exploiting human vulnerabilities within organizations. It relies on psychological manipulation and social engineering tactics to deceive targets and achieve malicious objectives.
--Pretexting attacks can lead to data breaches, financial losses, reputational damage, and regulatory penalties for organizations. Therefore, it is essential for organizations to raise awareness about pretexting techniques, implement robust security policies and procedures, and provide training to employees to recognize and mitigate social engineering attacks.
+- Pretexting can be highly effective in bypassing technical controls and exploiting human vulnerabilities within organizations. It relies on psychological manipulation and social engineering tactics to deceive targets and achieve malicious objectives.
+- Pretexting attacks can lead to data breaches, financial losses, reputational damage, and regulatory penalties for organizations. Therefore, it is essential for organizations to raise awareness about pretexting techniques, implement robust security policies and procedures, and provide training to employees to recognize and mitigate social engineering attacks.
 
 ## Pretexting Templates/Samples
 **Corporate IT Department Upgrade**:
