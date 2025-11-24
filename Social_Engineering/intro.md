@@ -66,15 +66,15 @@ attackers exploit vulnerabilities in the target's systems or applications to gai
 + Unlike traditional phishing attacks, which cast a wide net and aim to deceive as many recipients as possible, spear phishing attacks are highly personalized and customized to exploit the unique characteristics, interests, and relationships of the intended targets.
 
 ## Spear-Phishing Process
-1. Target Selection & Research:
+1. **Target Selection & Research:**
 Attackers carefully select their targets based on specific criteria, such as job roles, departments, or organizational hierarchies.
 Extensive reconnaissance is conducted to gather information about the targets, including names, job titles, roles, responsibilities, work relationships, and personal interests.
 Publicly available sources, social media profiles, corporate directories, and leaked data may be mined to compile detailed profiles of the targets
-2. Message Tailoring:
+2. **Message Tailoring:**
 Using the gathered information, attackers craft highly personalized and convincing emails or messages designed to appear legitimate and trustworthy.
 The content of the messages may reference recent events, projects, or activities relevant to the target's role or interests to enhance credibility.
 Attackers may impersonate trusted individuals, such as colleagues, supervisors, or external partners, to increase the likelihood of the targets
 opening the messages and taking the desired actions.
-3. Delivery:
+3. **Delivery:**
 Spear phishing messages are delivered to the targeted individuals via email, social media, instant messaging platforms, or other communication channels.
 Attackers employ tactics to bypass email security filters and anti-phishing mechanisms, such as using compromised or spoofed email accounts, exploiting zero-day vulnerabilities, or leveraging trusted third-party services.
