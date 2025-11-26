@@ -16,7 +16,7 @@ GoPhish is a powerful, open-source phishing simulation toolkit built for red tea
 
 ---
 
-# 🧩 **GoPhish Architecture (Visual Breakdown)**
+# 🧩 **GoPhish Architecture**
 
               +-----------------------+
               |   GoPhish Admin UI    |
