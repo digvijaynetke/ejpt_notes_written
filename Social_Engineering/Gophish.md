@@ -2,7 +2,7 @@
 
 ---
 
-# 🧠 **What is GoPhish? **
+# 🧠 **What is GoPhish?**
 
 GoPhish is a powerful, open-source phishing simulation toolkit built for red teamers, blue teamers, cybersecurity trainers, and pentesters. It allows organizations to test how employees respond to phishing attacks in a safe, controlled environment.
 
@@ -18,7 +18,6 @@ GoPhish is a powerful, open-source phishing simulation toolkit built for red tea
 
 # 🧩 **GoPhish Architecture (Visual Breakdown)**
 
-```
               +-----------------------+
               |   GoPhish Admin UI    |
               | 127.0.0.1:3333 (HTTP) |
@@ -37,7 +36,6 @@ GoPhish is a powerful, open-source phishing simulation toolkit built for red tea
               |  Phishing Server       |
               |   Port 80/8080         |
               +------------------------+
-```
 
 ---
 
